@@ -14,7 +14,8 @@ function App() {
 
   const [state, setState] = useState({
     title: 'Title',
-    number: 21
+    number: 21,
+    words: ['react', 'redux', 'nuxt']
   })
 
   const increment = () => {
@@ -36,12 +37,34 @@ function App() {
     })
   }
 
+  const addEl = () => {
+    state.words.push(Math.trunc(Math.random() * 20))
+    setState(prev => {
+      return {
+        ...prev
+      }
+    })
+  }
+
+  const removeEl = () => {
+    state.words.pop()
+    setState(prev => {
+      return {
+        ...prev
+      }
+    })
+  }
+
+
   return (
     <div className="App">
       <h1>Счетчик: {counter}</h1>
       <button onClick={increment}>Add</button>
       <button onClick={decrement}>Remove</button> 
       <button onClick={changeTitle}>Change title</button>
+      <button onClick={addEl}>Add el</button>
+
+      <button onClick={removeEl}>Remove el</button>
 
       <pre>{JSON.stringify(state, null, 2)}</pre> 
     </div>
